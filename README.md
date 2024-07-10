@@ -1,5 +1,7 @@
 # FallingSandApplesoftBasic
 This is a very simple Falling Sand Simulation written in Applesoft Basic.
+![SandSim](https://github.com/LukeBarthel/FallingSandApplesoftBasic/assets/175216318/f5997894-9cb3-4ed7-a837-c2119168a471)
+
 ## 1. Variable Initialization
 In Applesoft Basic, only the first two letters of a variable are actually saved. If you initiate the variables "CurserPositionX" and "CurserPositionY", they will be treated as the same variable called "Cu". To avoid this issue, I use short variable names, as it is very hard to spot this error when troubleshooting.
 
