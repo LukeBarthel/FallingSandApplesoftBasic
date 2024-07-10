@@ -1,5 +1,5 @@
 # FallingSandApplesoftBasic
-This is a very simple Falling Sand Simulation written in Applesoft Basic.
+This is a very simple Falling Sand Simulation written in Applesoft Basic. You can try it yourself on "https://www.calormen.com/jsbasic/", or on any other emulator by uploading the "SandSim.txt".
 ![SandSim](https://github.com/LukeBarthel/FallingSandApplesoftBasic/assets/175216318/f5997894-9cb3-4ed7-a837-c2119168a471)
 
 ## 1. Variable Initialization
