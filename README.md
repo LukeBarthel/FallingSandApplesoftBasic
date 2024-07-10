@@ -2,6 +2,7 @@
 This is a very simple Falling Sand Simulation written in Applesoft Basic. In Applesoft Basic, only the first two letters of a variable are actually saved. If you initiate the variables "CurserPositionX" and "CurserPositionY", they will be treated as the same variable called "Cu". To avoid this issue, I use short variable names, as it is very hard to spot this error when troubleshooting.
 
 1. Variable Initialization
+
 hgr: Initializes the high-resolution graphics mode.
 cx and cy: Current position of the cursor.
 n: Number of sand particles.
