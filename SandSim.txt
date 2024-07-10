@@ -1,0 +1,73 @@
+0 REM Falling Sand Simulation
+
+10 REM Initiating Variables 
+20 hgr
+30 cx = 5
+40 cy = 5
+50 n = 0
+60 dim p(256,1)
+70 md = 0
+80 ml = 0
+90 mr = 0
+100 dl = 0
+110 x = 0
+120 fi = 1 : f = 1
+130 gosub 1000
+140 ts = 5
+
+500 REM Main Loop
+500 gosub 2000
+510 gosub 3000
+520 gosub 4000
+530 gosub 5000
+540 goto 500
+
+1000 REM Creating new Instance
+1000 p(n, 0) = cx : p(n, 1) = cy
+1010 n = n + 1
+1999 return
+
+2000 REM Sand Particle Logic
+2000 for i = x to n - 1
+2010 if p(i, 1) = 130/ts then goto 2110
+2020 md = 1 : ml = 1 : mr = 1
+2030 for it = 0 to i
+2040 if p(it, 0) = p(i, 0) and p(it, 1) = p(i, 1) + 1 then md = 0
+2050 if p(it, 0) = p(i, 0) - 1 and p(it, 1) = p(i, 1) + 1 then ml = 0
+2060 if p(it, 0) = p(i, 0) + 1 and p(it, 1) = p(i, 1) + 1 then mr = 0
+2070 next it
+2080 if md = 1 then p(i, 1) = p(i, 1) + 1 : goto 2120
+2090 if ml = 1 then p(i, 1) = p(i, 1) + 1 : p(i, 0) = p(i, 0) - 1 : goto 2120
+2100 if mr = 1 then p(i, 1) = p(i, 1) + 1 : p(i, 0) = p(i, 0) + 1 : goto 2120
+2110 x = x + 1
+2120 next i
+2999 return
+
+3000 Rem Key Listener and Event Manager
+3000 let k = peek(49152)
+3010 if k = 160 then gosub 1000
+3020 if k = 139 then cy = cy - 1
+3030 if k = 138 then cy = cy + 1
+3040 if k = 136 then cx = cx - 1
+3050 if k = 149 then cx = cx + 1
+3060 let k = PEEK(49168)
+3999 return
+
+4000 REM Crude Wait function
+4000 for i = 0 to dl : next i : return
+
+5000 REM Draw funktion
+5000 poke 230, 32 * f : call 62450
+5010 hcolor = 5
+5020 for i = 0 to n - 1
+5030 for it = 0 to ts
+5040 hplot p(i, 0) * ts, p(i, 1) * ts + it to p(i, 0) * ts + ts, p(i, 1) * ts + it
+5050 next it
+5060 next i
+5070 hcolor = 2
+5080 hplot cx * ts, cy * ts to cx * ts + ts, cy * ts + ts
+5090 hplot cx * ts + ts, cy * ts to cx * ts, cy * ts + ts
+5100 poke (49236 + (f-1)), 0
+5110 f = f + fi
+5120 fi = fi * -1
+5999 return
